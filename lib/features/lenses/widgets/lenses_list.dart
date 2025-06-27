@@ -3,8 +3,9 @@ import '../../../../core/constants/app_dimensions.dart';
 import 'lens_card.dart';
 
 class LensesList extends StatelessWidget {
-  const LensesList({super.key});
+  const LensesList({super.key, this.onTap});
 
+  final Function(Map<String, dynamic> lens)? onTap;
   final List<Map<String, dynamic>> lensTypes = const [
     {
       'name': 'Single Vision Lenses',
@@ -58,7 +59,7 @@ class LensesList extends StatelessWidget {
           icon: lens['icon'],
           features: const [], // Add features if needed
           onTap: () {
-            // TODO: Implement lens selection
+            onTap!(lens);
           },
         );
       },

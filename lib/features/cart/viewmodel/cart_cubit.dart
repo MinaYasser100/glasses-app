@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:glasses_app/models/cart_item.dart';
 import '../../../models/glasses.dart';
 import '../../../services/cart_service.dart';
 import 'cart_state.dart';
@@ -12,14 +13,28 @@ class CartCubit extends Cubit<CartState> {
     try {
       emit(CartLoading());
 
-      final items = await _cartService.getCartItems();
-      final totalPrice = await _cartService.getTotalPrice();
-      final itemCount = await _cartService.getItemCount();
+      // Dummy glasses object (customize fields as needed)
+      final dummyGlasses = Glasses(
+        id: "1",
+        name: 'Stylish Sunglasses',
+        price: 320.0,
+        description: 'Elegant sunglasses with black frame and beachy style.',
+        image: '', category: '',
+      );
 
+      // Dummy cart item
+      final dummyItem = CartItem(
+        id: "1",
+        glasses: dummyGlasses,
+        quantity: 2,
+        addedAt: DateTime.now(),
+      );
+
+      // Emit dummy state
       emit(CartLoaded(
-        items: items,
-        totalPrice: totalPrice,
-        itemCount: itemCount,
+        items: [],
+        totalPrice: dummyGlasses.price * 2,
+        itemCount: 2,
       ));
     } catch (e) {
       emit(CartError('Failed to load cart: ${e.toString()}'));

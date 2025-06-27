@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:glasses_app/features/order/place_order_screen.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../widgets/product_app_bar.dart';
 import '../widgets/product_grid.dart';
@@ -8,10 +9,24 @@ class ProductView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.background,
       appBar: ProductAppBar(),
-      body: ProductGrid(),
+      body: Column(
+        children: [
+          Expanded(child: ProductGrid()),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //           builder: (context) => PlaceOrderScreen(),
+          //         ),
+          //       );
+          //     },
+          //     child: Text("Place Order "))
+        ],
+      ),
     );
   }
 }

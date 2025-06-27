@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:glasses_app/features/checkout/checkout_screen.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -52,7 +53,11 @@ class CartSummary extends StatelessWidget {
               CustomElevatedButton(
                 text: 'Proceed to Checkout',
                 onPressed: () {
-                  _showCheckoutDialog(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CheckoutScreen(),
+                      ));
                 },
               ),
               const SizedBox(height: AppDimensions.spacingSmall),

@@ -5,17 +5,23 @@ import '../widgets/lenses_header.dart';
 import '../widgets/lenses_list.dart';
 
 class LensesView extends StatelessWidget {
-  const LensesView({super.key});
+  const LensesView({super.key, required this.onTap});
+  final void Function(Map<String, dynamic> item) onTap;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: LensesAppBar(),
+      appBar: const LensesAppBar(),
       body: Column(
         children: [
-          LensesHeader(),
-          Expanded(child: LensesList()),
+          const LensesHeader(),
+          Expanded(child: LensesList(
+            onTap:  (item) {
+
+              onTap(item);
+            },
+          )),
         ],
       ),
     );

@@ -55,7 +55,11 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PlacesView());
 
       case AppRoutes.lenses:
-        return MaterialPageRoute(builder: (_) => const LensesView());
+        final args = settings.arguments as Function()?;
+        return MaterialPageRoute(
+            builder: (_) => LensesView(
+                  onTap: (Map<String, dynamic> item) {},
+                ));
 
       case AppRoutes.champer:
         return MaterialPageRoute(builder: (_) => const ChamperView());
